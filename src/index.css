@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+.test-on {
+  @apply fixed inset-0 min-h-screen bg-black/90 rounded
+         transition-transform duration-500 translate-x-0;
+}
+
+.test-off {
+  @apply fixed inset-0 min-h-screen bg-black/90 rounded
+         transition-transform duration-500 -translate-x-full;
+}
