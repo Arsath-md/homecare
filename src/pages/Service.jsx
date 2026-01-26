@@ -8,7 +8,7 @@ export default function Service(){
         <>
         <div className="min-h-screen ">
                <div className="p-5 shadow-md">
-                    <h1>ho</h1>
+                    <h1>to be continue</h1>
                </div>
         </div>
         </>
