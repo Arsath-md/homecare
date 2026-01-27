@@ -15,7 +15,7 @@ export default function Home() {
   const [content,setContent] = useState(false)
 
   
-
+  // used for sticky nav bar in the bottom
   useEffect(()=>{
       const observer = new IntersectionObserver( ([entry])=>{
           if(!entry.isIntersecting){
@@ -113,8 +113,7 @@ export default function Home() {
     </div>
 
    
-       <Service  />
-       <Customers/>
+      
 
     </>
    

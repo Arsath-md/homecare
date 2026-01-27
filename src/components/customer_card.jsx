@@ -1,11 +1,20 @@
+import { faFaceKiss, faUserAstronaut } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 export default function Customer_card() {
     return (
-        <div className="bg-gray-300 rounded w-fit p-5 md:w-1/3 mt-3 shadow-lg">
-            <div className="flex justify-center">
-                <img src="/src/assets/image.webp" className="rounded-full h-30px w-30px" style={{ height: "200px", width: "200px" }} alt="" />
-            </div>
-            <h3 className="my-3 text-xl">David warmer</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, quae. Nesciunt fuga sed repellendus non dolorum architecto molestiae quod ipsa.</p>
-        </div>
+        <div className="text-center">
+                        <div className="bg-[#F2F7FB] text-center flex flex-auto flex-col gap-5 p-5 rounded-lg justify-center items-center ">
+                            <div className="h-24 w-24 border rounded-full flex justify-center items-center">
+                                <FontAwesomeIcon icon={faUserAstronaut} size="3x" />
+                            </div>
+                            <div>
+                                <h1 className="heading">akash</h1>
+                            </div>
+                            <div>
+                                <h2 className="semihead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, porro. Veritatis, porro modi obcaecati ducimus deserunt odit quas? </h2>
+                            </div>
+                        </div>
+                    </div>
     )
 }
