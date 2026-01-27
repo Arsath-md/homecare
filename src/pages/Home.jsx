@@ -33,7 +33,7 @@ export default function Home() {
 
   return (
     <> <div
-      className="relative min-h-screen bg-cover bg-center"
+      className="relative min-h-screen bg-cover bg-center shadow-lg"
       style={{ backgroundImage: `url(${hero})` }}
     >
       {/* overlay */}
@@ -67,7 +67,7 @@ export default function Home() {
       </div>
 
       {/* hero content */}
-      <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 text-center text-white"  ref={showref}>
+      <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 text-center text-white shadow-lg rounded"  ref={showref}>
 <Toaster/>
         <h1 className="text-4xl font-bold mb-4">
           Best home nursing for your loved ones
