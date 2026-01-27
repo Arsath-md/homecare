@@ -1,19 +1,22 @@
 import { useState } from 'react'
 import Home from './pages/Home'
-import Services from './pages/Sevices'
-import News_letter from './pages/news_letter'
-import Get_in_touch from './pages/get_in_touch'
-import Customers from './pages/Customers'
+import Forms from './components/form'
+import { Route,Routes } from 'react-router-dom'
 
 function App() {
     return(
-        <div className='bg-gray-200'>
-            <Home/>
-            <Services/>
-            <Customers/>
-            <News_letter/>
-            <Get_in_touch/>
-        </div>
+        <>
+             <Routes>
+            
+                         <Route path='/' element={<Home/>}></Route> 
+                         <Route path='/service/:title' element={<Forms/>}></Route>
+                   
+            </Routes>
+     
+        
+        
+        </>
+   
     )
 }
 

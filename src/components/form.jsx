@@ -2,10 +2,10 @@ import { useParams } from "react-router-dom"
 import service from "./servicedata"
 
 export default function Forms(){
-            const {name} = useParams();
+            const {title} = useParams();
     return(
         <>
-        <h1>{name}</h1>
+        <h1>{title}</h1>
         
                 
         </>

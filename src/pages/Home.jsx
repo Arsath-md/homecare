@@ -4,8 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBurger, faHamburger, faHome, faHomeAlt, faHomeLg, faHomeUser, faL, faNavicon, faPhone, faServer, faUsd, faUserNurse, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { faServicestack, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
-import Service from "./Service";
+import Services from "./Sevices";
 import Customers from "./Customers";
+import News_letter from "./news_letter";
+import Get_in_touch from "./get_in_touch";
 import {Toaster,toast} from "react-hot-toast";
 
 
@@ -32,7 +34,9 @@ export default function Home() {
 
 
   return (
-    <> <div
+    <> 
+    <div className="bg-gray-300">
+  <div
       className="relative min-h-screen bg-cover bg-center shadow-lg"
       style={{ backgroundImage: `url(${hero})` }}
     >
@@ -113,7 +117,13 @@ export default function Home() {
     </div>
 
    
-      
+            <Services/>
+            <Customers/>
+            <News_letter/>
+            <Get_in_touch/>
+    </div>
+    
+  
 
     </>
    
