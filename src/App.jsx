@@ -1,11 +1,15 @@
 import { useState } from 'react'
 import Home from './pages/Home'
+// import { Sett } from './components/Setcontext'
 import Forms from './components/form'
 import { Route,Routes } from 'react-router-dom'
 
 function App() {
+     
+
     return(
         <>
+        
              <Routes>
             
                          <Route path='/' element={<Home/>}></Route> 

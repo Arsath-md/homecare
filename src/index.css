@@ -15,3 +15,7 @@
 .semihead{
   @apply font-semibold text-xl
 }
+
+input{
+  @apply p-3 ring ring-red-500 rounded text-center
+}

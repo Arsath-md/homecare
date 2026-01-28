@@ -11,10 +11,11 @@ import Get_in_touch from "./get_in_touch";
 import {Toaster,toast} from "react-hot-toast";
 
 
-export default function Home() {
+export default function Home(){
   const [show, setShow] = useState(false);
   const showref = useRef(null)
   const [content,setContent] = useState(false)
+
 
   
   // used for sticky nav bar in the bottom
@@ -66,6 +67,7 @@ export default function Home() {
           <a className="flex items-center gap-3">
             <FontAwesomeIcon icon={faPhone} size="2x" />
             <span className="text-xl">Contact</span>
+            
           </a>
         </div>
       </div>
@@ -121,6 +123,9 @@ export default function Home() {
             <Customers/>
             <News_letter/>
             <Get_in_touch/>
+    
+   
+      
     </div>
     
   
