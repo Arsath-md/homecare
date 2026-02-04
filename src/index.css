@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html{
+  scroll-behavior: smooth;
+}
+
 .test-on {
   @apply fixed inset-0 min-h-screen bg-black/90 rounded
          transition-transform duration-500 translate-x-0;
@@ -16,6 +20,6 @@
   @apply font-semibold text-xl
 }
 
-input{
-  @apply p-3 ring ring-red-500 rounded text-center
+.input1{
+  @apply p-3 rounded text-center ring ring-green-600
 }

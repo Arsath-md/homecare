@@ -1,16 +1,49 @@
-export default function News_letter(){
-    return(
-        <div className="bg-white rounded m-2 border text-center p-5 font-bold flex flex-col align-center justify-center">
-            <h2 className="text-xl">News Letter</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, sit.</p>
-            {/* <div className="flex justify-center align-center w-100%"> */}
-            <div  className="flex justify-center">
-                <input type="search" name="" id="" className="md:w-2/5 bg-gray-500 rounded-md p-2 mt-3 focus:outline-none focus:ring text-white placeholder-red-500 text-center" placeholder="Enter Email" />
-            </div>
-            <div className="flex justify-center">
-                <button className="bg-red-500 w-fit p-2 rounded-2xl px-5 mt-4 text-center">Subcribe</button>
-            </div>
-            {/* </div> */}
-        </div>
-    )
+export default function News_letter() {
+  return (
+    <>
+    <div className="p-2 text-center ">
+         {/* Heading */}
+        <h2 className="text-4xl font-bold text-gray-900 p-4">
+          Get Care Updates
+        </h2>
+         <section className="px-4 py-8 p-6 bg-[#F2F7FB] shadow-lg rounded">
+      <div className="max-w-md mx-auto rounded text-center font-bold">
+
+       
+
+        <p className="text-md text-gray-600 mt-2">
+          Receive simple health tips, elder care guidance, and service updates.
+        </p>
+
+        {/* Form */}
+        <form className="mt-4 space-y-3">
+
+          <input
+            type="email"
+            placeholder="Enter your email address"
+            className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm
+                       focus:outline-none focus:ring-2 focus:ring-green-500"
+            aria-label="Email address"
+          />
+
+          <button
+            type="submit"
+            className="w-full bg-green-600 text-white py-2.5 rounded-lg text-sm font-medium"
+          >
+            Subscribe
+          </button>
+
+        </form>
+
+        {/* Trust note */}
+        <p className="text-xs text-gray-500 mt-3">
+          No spam. Only useful care information. Unsubscribe anytime.
+        </p>
+
+      </div>
+    </section>
+    </div>
+    </>
+    
+  );
 }
