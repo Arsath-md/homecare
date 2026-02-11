@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import service from "../components/servicedata"
+import service from "../datas/servicedata"
 import Service_card from "../components/service_card"
 
 export default function Services(){

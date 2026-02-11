@@ -6,12 +6,12 @@ export default function News_letter() {
         <h2 className="text-4xl font-bold text-gray-900 p-4">
           Get Care Updates
         </h2>
-         <section className="px-4 py-8 p-6 bg-[#F2F7FB] shadow-lg rounded">
+         <section className="px-4 py-8 p-6 bg-[#F2F7FB] shadow-lg rounded" data-aos = "fade-up">
       <div className="max-w-md mx-auto rounded text-center font-bold">
 
        
 
-        <p className="text-md text-gray-600 mt-2">
+        <p className="text-lg text-gray-600 mt-2">
           Receive simple health tips, elder care guidance, and service updates.
         </p>
 
@@ -28,7 +28,7 @@ export default function News_letter() {
 
           <button
             type="submit"
-            className="w-full bg-green-600 text-white py-2.5 rounded-lg text-sm font-medium"
+            className="w-full bg-green-600 text-white py-2.5 rounded-lg text-lg font-bold"
           >
             Subscribe
           </button>
@@ -36,7 +36,7 @@ export default function News_letter() {
         </form>
 
         {/* Trust note */}
-        <p className="text-xs text-gray-500 mt-3">
+        <p className="text-md text-gray-500 mt-3">
           No spam. Only useful care information. Unsubscribe anytime.
         </p>
 
