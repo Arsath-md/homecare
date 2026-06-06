@@ -24,8 +24,8 @@ export default function Home() {
 
   const heroRef = useRef(null);
 
-  const PHONE = "+919999999999";
-  const WHATSAPP = "919999999999";
+  const PHONE = "+919363878868";
+  const WHATSAPP = "+919363878868";
 
 useEffect(() => {
   document.body.style.overflow = sidebarOpen
@@ -169,7 +169,7 @@ useEffect(() => {
           <div className="flex flex-col sm:flex-row gap-4">
 
             <a
-              href={`https://wa.me/${WHATSAPP}`}
+              href={`https://wa.me/${WHATSAPP}?text=Hi%20there!%20I'm%20interested%20in%20your%20services.`}
               target="_blank"
               rel="noopener noreferrer"
               className="
