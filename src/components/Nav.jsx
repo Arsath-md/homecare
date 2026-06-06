@@ -1,71 +1,166 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import {
+  faMagnifyingGlass,
+  faXmark,
+  faBars,
+} from "@fortawesome/free-solid-svg-icons";
+
 import Searching from "./Searching";
 
-export default function Nav() {
+export default function Nav({ onMenuClick }) {
   const [opened, setOpened] = useState(false);
 
   return (
     <>
-      {/* Navigation bar */}
-      <nav
-        className="flex justify-between flex-auto p-2 bg-black/10"
-        aria-label="Main navigation"
+      <header
+        className="
+          fixed
+          top-0
+          left-0
+          right-0
+          z-50
+          bg-black/30
+          backdrop-blur-xl
+          border-b
+          border-white/10
+        "
       >
-        {/* Logo */}
-        <div className="z-110 rounded-full h-15 w-15">
-          <img
-            src="https://ik.imagekit.io/hifi/imgs/hclogo.png?updatedAt=1770127333262"
-            alt="Velan Homecare Nursing logo"
-          />
-        </div>
-
-        {/* Brand name */}
-        <div className="text-center z-100">
-          <h1
-            className="font-bold text-3xl z-110"
-            style={{ fontFamily: "cursive", color: "blue" }}
-          >
-            Velan
-          </h1>
-          <p className="font-bold text-xl text-white">
-            Homecare Nursing
-          </p>
-        </div>
-
-        {/* Search toggle */}
         <div
-          className={`p-1 z-100 rounded-full text-center h-8 w-8 ${
-            opened ? "bg-red-600" : "bg-black"
-          } transition duration-300`}
+          className="
+            max-w-7xl
+            mx-auto
+            px-2
+            sm:px-6
+            lg:px-8
+            h-15
+            flex
+            items-center
+            justify-between
+          "
         >
-          <button
-            type="button"
-            aria-label={opened ? "Close search" : "Open search"}
-            aria-expanded={opened}
-            onClick={() => setOpened(!opened)}
-            className="w-full h-full flex items-center justify-center focus:outline-none "
-          >
-            <FontAwesomeIcon
-              icon={faMagnifyingGlass}
-              className="text-white"
-              aria-hidden="true"
-            />
-          </button>
-        </div>
-      </nav>
+          {/* Logo */}
+          <div className="flex items-center gap-3">
+            <div
+              className="
+                h-12
+                w-12
+                sm:h-14
+                sm:w-14
+                rounded-full
+                overflow-hidden
+                bg-white
+                shadow-lg
+                shrink-0
+              "
+            >
+              <img
+                src="/logovels.png"
+                alt="Velan Homecare Nursing"
+                className="h-full w-full object-cover"
+              />
+            </div>
 
-      {/* Search panel */}
-      {opened && (
-        <div
-          className="flex justify-center transition duration-400"
-          role="search"
-          aria-label="Site search"
-        >
+            <div>
+              <h1
+                className="
+                  text-lg
+                  sm:text-2xl
+                  font-bold
+                  text-white
+                "
+              >
+                Velan
+              </h1>
+
+              <p
+                className="
+                  text-[11px]
+                  sm:text-sm
+                  text-green-300
+                "
+              >
+                Homecare Nursing
+              </p>
+            </div>
+          </div>
+
+          {/* Actions */}
+          <div className="flex items-center gap-3">
+            {/* Search */}
+            <button
+              type="button"
+              onClick={() => setOpened(!opened)}
+              aria-label="Search"
+              className="
+                h-11
+                w-11
+                rounded-full
+                bg-white/10
+                hover:bg-green-500
+                text-white
+                transition-all
+                duration-300
+                flex
+                items-center
+                justify-center
+              "
+            >
+              <FontAwesomeIcon
+                icon={
+                  opened
+                    ? faXmark
+                    : faMagnifyingGlass
+                }
+              />
+            </button>
+
+            {/* Mobile Menu */}
+            <button
+              type="button"
+              aria-label="Open Menu"
+              onClick={onMenuClick}
+              className="
+                h-11
+                w-11
+                rounded-full
+                bg-green-500
+                hover:bg-green-600
+                text-white
+                transition
+                flex
+                items-center
+                justify-center
+              "
+            >
+              <FontAwesomeIcon icon={faBars} />
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Search Panel */}
+      <div
+        className={`
+          fixed
+          top-24
+          left-0
+          right-0
+          z-40
+          px-4
+          transition-all
+          duration-300
+          ${
+            opened
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 -translate-y-5 pointer-events-none"
+          }
+        `}
+      >
+        <div className="max-w-4xl mx-auto">
           <Searching />
         </div>
-      )}
+      </div>
     </>
   );
 }

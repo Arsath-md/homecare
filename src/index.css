@@ -3,23 +3,62 @@
 html{
   scroll-behavior: smooth;
 }
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
 
-.test-on {
-  @apply fixed inset-0 min-h-screen bg-black/90 rounded
-         transition-transform duration-500 translate-x-0;
-}
-
-.test-off {
-  @apply fixed inset-0 min-h-screen bg-black/90 rounded
-         transition-transform duration-500 -translate-x-full;
-}
-.heading{
-  @apply font-bold text-2xl;
-}
-.semihead{
-  @apply font-semibold text-xl
+  50% {
+    transform: translateY(-15px);
+  }
 }
 
-.input1{
-  @apply p-3 rounded text-center ring ring-green-600
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Hide Scrollbar */
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
+}
+/* Horizontal Scrollbar */
+
+.custom-scroll::-webkit-scrollbar {
+  height: 10px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: #e5e7eb;
+  border-radius: 999px;
+  margin: 0 10px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    90deg,
+    #16a34a,
+    #22c55e
+  );
+  border-radius: 999px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    90deg,
+    #15803d,
+    #16a34a
+  );
+}
+
+/* Firefox */
+
+.custom-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #16a34a #e5e7eb;
 }

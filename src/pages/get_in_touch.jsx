@@ -1,127 +1,280 @@
 export default function GetInTouch() {
   return (
-    <div className="p-1">
-      <main
-        className="px-4 py-6 max-w-md mx-auto shadow-xl"
-        data-aos="fade-up"
-        aria-labelledby="get-in-touch-heading"
-      >
-        {/* Header */}
-        <header className="mb-6">
-          <h1
-            id="get-in-touch-heading"
-            className="text-2xl font-bold text-gray-900"
-          >
-            Get in Touch
-          </h1>
-          <p className="text-gray-600 mt-2 text-lg">
-            Need home care support? Call or message us anytime.
-          </p>
-        </header>
+    <section className="relative py-20 overflow-hidden bg-slate-50">
 
-        {/* Quick Actions */}
-        <section className="space-y-3 mb-6" aria-label="Quick contact options">
-          <a
-            href="tel:+919999999999"
-            aria-label="Call us now"
-            className="block w-full text-lg text-center bg-green-600 text-white py-3 rounded-lg font-bold"
-          >
-            <span aria-hidden="true">📞</span> Call Now
-          </a>
+      {/* Background Effects */}
+      <div className="absolute top-0 left-0 w-72 h-72 bg-green-200 rounded-full blur-3xl opacity-30" />
+      <div className="absolute bottom-0 right-0 w-72 h-72 bg-blue-200 rounded-full blur-3xl opacity-30" />
 
-          <a
-            href="https://wa.me/919999999999"
-            aria-label="Contact us on WhatsApp"
-            className="block w-full text-center text-lg bg-green-500 text-white py-3 rounded-lg font-bold"
-          >
-            <span aria-hidden="true">💬</span> WhatsApp Us
-          </a>
-        </section>
+      <div className="relative max-w-7xl mx-auto px-5">
 
-        {/* Divider */}
-        <div className="flex items-center my-6" aria-hidden="true">
-          <div className="flex-grow border-t border-gray-200"></div>
-          <span className="px-3 text-lg text-gray-500">or</span>
-          <div className="flex-grow border-t border-gray-200"></div>
-        </div>
+        {/* Heading */}
+        <div className="text-center mb-14">
+          <span className="px-4 py-2 rounded-full bg-green-100 text-green-700 text-sm font-medium">
+            📞 Contact Us
+          </span>
 
-        {/* Contact Form */}
-        <section>
-          <h2 className="text-lg font-bold text-gray-900 mb-4">
-            Request a Call Back
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mt-4">
+            Get In Touch
           </h2>
 
-          <form
-            className="space-y-4"
-            aria-label="Callback request form"
-          >
-            <div>
-              <label
-                htmlFor="name"
-                className="block text-lg text-gray-700 mb-1"
-              >
-                Name
-              </label>
-              <input
-                id="name"
-                type="text"
-                required
-                placeholder="Your full name"
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
-              />
+          <p className="text-gray-600 max-w-2xl mx-auto mt-4">
+            Need professional home care support? Our team is available
+            24/7 to assist you and your loved ones.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-10">
+
+          {/* LEFT SIDE */}
+          <div>
+
+            {/* Contact Cards */}
+            <div className="space-y-5">
+
+              <div className="bg-white rounded-3xl p-6 shadow-lg">
+                <h3 className="text-xl font-bold mb-2">
+                  📞 Call Us
+                </h3>
+
+                <p className="text-gray-600 mb-4">
+                  Speak directly with our care team.
+                </p>
+
+                <a
+                  href="tel:+919363878868"
+                  className="
+                    inline-block
+                    bg-green-600
+                    hover:bg-green-700
+                    text-white
+                    px-6
+                    py-3
+                    rounded-xl
+                    font-semibold
+                    transition
+                  "
+                >
+                  Call Now
+                </a>
+              </div>
+
+              <div className="bg-white rounded-3xl p-6 shadow-lg">
+                <h3 className="text-xl font-bold mb-2">
+                  💬 WhatsApp
+                </h3>
+
+                <p className="text-gray-600 mb-4">
+                  Chat with us for quick assistance.
+                </p>
+
+                <a
+                  href="https://wa.me/919363878868"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="
+                    inline-block
+                    bg-green-500
+                    hover:bg-green-600
+                    text-white
+                    px-6
+                    py-3
+                    rounded-xl
+                    font-semibold
+                    transition
+                  "
+                >
+                  WhatsApp Us
+                </a>
+              </div>
+
             </div>
 
-            <div>
-              <label
-                htmlFor="phone"
-                className="block text-lg text-gray-700 mb-1"
-              >
-                Phone Number
-              </label>
-              <input
-                id="phone"
-                type="tel"
-                required
-                placeholder="Mobile number"
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
-              />
+            {/* Trust Section */}
+            <div className="mt-8 bg-white rounded-3xl p-6 shadow-lg">
+
+              <h3 className="font-bold text-xl mb-4">
+                Why Families Trust Us
+              </h3>
+
+              <div className="grid grid-cols-2 gap-4">
+
+                <div className="text-center">
+                  <h4 className="text-3xl font-bold text-green-600">
+                    24/7
+                  </h4>
+                  <p className="text-gray-500">
+                    Support
+                  </p>
+                </div>
+
+                <div className="text-center">
+                  <h4 className="text-3xl font-bold text-green-600">
+                    100%
+                  </h4>
+                  <p className="text-gray-500">
+                    Verified Staff
+                  </p>
+                </div>
+
+                <div className="text-center">
+                  <h4 className="text-3xl font-bold text-green-600">
+                    10+
+                  </h4>
+                  <p className="text-gray-500">
+                    Services
+                  </p>
+                </div>
+
+                <div className="text-center">
+                  <h4 className="text-3xl font-bold text-green-600">
+                    Fast
+                  </h4>
+                  <p className="text-gray-500">
+                    Response
+                  </p>
+                </div>
+
+              </div>
+
             </div>
 
-            <div>
-              <label
-                htmlFor="service"
-                className="block text-lg text-gray-700 mb-1"
-              >
-                Service Needed
-              </label>
-              <select
-                id="service"
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-green-500"
-              >
-                <option value="home-nursing">Home Nursing</option>
-                <option value="elder-care">Elder Care</option>
-                <option value="physiotherapy">Physiotherapy</option>
-                <option value="equipment">Medical Equipment</option>
-                <option value="doctor-visit">Doctor Visit</option>
-              </select>
+          </div>
+
+          {/* RIGHT SIDE FORM */}
+          <div>
+
+            <div className="bg-white rounded-3xl shadow-xl p-8">
+
+              <h3 className="text-2xl font-bold text-slate-800 mb-6">
+                Request a Call Back
+              </h3>
+
+              <form className="space-y-5">
+
+                <div>
+                  <label className="block mb-2 font-medium">
+                    Full Name
+                  </label>
+
+                  <input
+                    type="text"
+                    placeholder="Enter your name"
+                    className="
+                      w-full
+                      border
+                      border-gray-300
+                      rounded-xl
+                      px-4
+                      py-3
+                      focus:ring-2
+                      focus:ring-green-500
+                      focus:outline-none
+                    "
+                  />
+                </div>
+
+                <div>
+                  <label className="block mb-2 font-medium">
+                    Phone Number
+                  </label>
+
+                  <input
+                    type="tel"
+                    placeholder="Enter phone number"
+                    className="
+                      w-full
+                      border
+                      border-gray-300
+                      rounded-xl
+                      px-4
+                      py-3
+                      focus:ring-2
+                      focus:ring-green-500
+                      focus:outline-none
+                    "
+                  />
+                </div>
+
+                <div>
+                  <label className="block mb-2 font-medium">
+                    Service Needed
+                  </label>
+
+                  <select
+                    className="
+                      w-full
+                      border
+                      border-gray-300
+                      rounded-xl
+                      px-4
+                      py-3
+                      focus:ring-2
+                      focus:ring-green-500
+                      focus:outline-none
+                    "
+                  >
+                    <option>Patient Care</option>
+                    <option>Old Age Care</option>
+                    <option>Nursing Care</option>
+                    <option>Baby Care</option>
+                    <option>Physiotherapy Care</option>
+                    <option>Doctor Visit</option>
+                    <option>Lab Test</option>
+                    <option>Ambulance Service</option>
+                    <option>Medicine Delivery</option>
+                    <option>Household Care</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block mb-2 font-medium">
+                    Message
+                  </label>
+
+                  <textarea
+                    rows="4"
+                    placeholder="Tell us about your requirement..."
+                    className="
+                      w-full
+                      border
+                      border-gray-300
+                      rounded-xl
+                      px-4
+                      py-3
+                      resize-none
+                      focus:ring-2
+                      focus:ring-green-500
+                      focus:outline-none
+                    "
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="
+                    w-full
+                    bg-green-600
+                    hover:bg-green-700
+                    text-white
+                    py-4
+                    rounded-xl
+                    font-semibold
+                    transition
+                  "
+                >
+                  Request Call Back
+                </button>
+
+              </form>
+
             </div>
 
-            <button
-              type="submit"
-              className="w-full bg-gray-900 text-white py-3 rounded-lg font-bold"
-            >
-              Request Call Back
-            </button>
-          </form>
-        </section>
+          </div>
 
-        {/* Trust Note */}
-        <p className="text-xs text-gray-500 mt-6 text-center">
-          <span aria-hidden="true">✔</span> Trained caregivers &nbsp; • &nbsp;
-          <span aria-hidden="true">✔</span> Verified staff &nbsp; • &nbsp;
-          <span aria-hidden="true">✔</span> 24/7 support
-        </p>
-      </main>
-    </div>
+        </div>
+
+      </div>
+    </section>
   );
 }

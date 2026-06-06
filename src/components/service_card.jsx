@@ -1,37 +1,126 @@
 import { Link } from "react-router-dom";
 
 export default function Service_card({ service }) {
+  const slug = service.title
+    .toLowerCase()
+    .replace(/\s+/g, "-");
+
   return (
     <div
-      className="bg-gray-900 rounded p-4 shadow-md text-center text-white flex flex-col justify-center items-center gap-2"
-      data-aos="zoom-in"
-      data-aos-delay="300"
-      data-aos-duration="600"
-      data-aos-easing="ease-out-back"
+      data-aos="fade-up"
+      data-aos-duration="700"
+      className="
+        group
+        bg-white
+        rounded-3xl
+        overflow-hidden
+        shadow-md
+        hover:shadow-2xl
+        transition-all
+        duration-500
+        hover:-translate-y-3
+        border
+        border-slate-100
+        h-full
+        flex
+        flex-col
+      "
     >
-      {/* Service image */}
-      <div className="flex justify-center">
+      {/* Service Image */}
+      <div className="relative overflow-hidden">
         <img
           src={service.image}
-          className="w-48 h-auto object-contain"
-          alt={`${service.title} service`}
+          alt={service.title}
+          loading="lazy"
+          className="
+            w-full
+            h-52
+            object-cover
+            transition-transform
+            duration-700
+            group-hover:scale-110
+          "
         />
+
+        {/* Overlay */}
+        <div
+          className="
+            absolute
+            inset-0
+            bg-gradient-to-t
+            from-black/60
+            via-transparent
+            to-transparent
+          "
+        />
+
+        {/* Badge */}
+        <div
+          className="
+            absolute
+            top-4
+            left-4
+            bg-green-500
+            text-white
+            text-xs
+            font-semibold
+            px-3
+            py-1
+            rounded-full
+          "
+        >
+          Home Care
+        </div>
       </div>
 
-      {/* Service title */}
-      <h2 className="text-lg font-semibold">
-        {service.title}
-      </h2>
+      {/* Content */}
+      <div className="p-6 flex flex-col flex-grow">
+        <h2
+          className="
+            text-xl
+            font-bold
+            text-slate-800
+            mb-3
+          "
+        >
+          {service.title}
+        </h2>
 
-      {/* Enquire link (styled as button) */}
-      <Link
-        to={`/service/${service.title}`}
-        state={{ images: service.image }}
-        aria-label={`Enquire about ${service.title}`}
-        className="text-green-700 ring ring-green-800 rounded p-2 font-semibold focus:outline-none focus:ring-2 focus:ring-green-400"
-      >
-        Enquire now
-      </Link>
+        <p
+          className="
+            text-gray-600
+            leading-relaxed
+            text-sm
+            mb-6
+            flex-grow
+          "
+        >
+          {service.description}
+        </p>
+
+        {/* Button */}
+        <Link
+          to={`/service/${slug}`}
+          state={{ service }}
+          aria-label={`Enquire about ${service.title}`}
+          className="
+            w-full
+            text-center
+            py-3
+            rounded-xl
+            font-semibold
+            text-white
+            bg-green-600
+            hover:bg-green-700
+            transition-all
+            duration-300
+            shadow-md
+            hover:shadow-lg
+          "
+        >
+          Enquire Now →
+        </Link>
+      </div>
     </div>
   );
 }
