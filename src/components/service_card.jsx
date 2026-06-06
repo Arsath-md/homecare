@@ -8,7 +8,6 @@ export default function Service_card({ service }) {
   return (
     <div
       data-aos="fade-up"
-      data-aos-duration="700"
       className="
         group
         bg-white
@@ -26,7 +25,6 @@ export default function Service_card({ service }) {
         flex-col
       "
     >
-      {/* Service Image */}
       <div className="relative overflow-hidden">
         <img
           src={service.image}
@@ -42,19 +40,8 @@ export default function Service_card({ service }) {
           "
         />
 
-        {/* Overlay */}
-        <div
-          className="
-            absolute
-            inset-0
-            bg-gradient-to-t
-            from-black/60
-            via-transparent
-            to-transparent
-          "
-        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
-        {/* Badge */}
         <div
           className="
             absolute
@@ -63,7 +50,6 @@ export default function Service_card({ service }) {
             bg-green-500
             text-white
             text-xs
-            font-semibold
             px-3
             py-1
             rounded-full
@@ -73,49 +59,28 @@ export default function Service_card({ service }) {
         </div>
       </div>
 
-      {/* Content */}
       <div className="p-6 flex flex-col flex-grow">
-        <h2
-          className="
-            text-xl
-            font-bold
-            text-slate-800
-            mb-3
-          "
-        >
+        <h2 className="text-xl font-bold text-slate-800 mb-3">
           {service.title}
         </h2>
 
-        <p
-          className="
-            text-gray-600
-            leading-relaxed
-            text-sm
-            mb-6
-            flex-grow
-          "
-        >
+        <p className="text-gray-600 text-sm flex-grow">
           {service.description}
         </p>
 
-        {/* Button */}
         <Link
           to={`/service/${slug}`}
-          state={{ service }}
-          aria-label={`Enquire about ${service.title}`}
           className="
+            mt-5
             w-full
             text-center
             py-3
             rounded-xl
-            font-semibold
-            text-white
             bg-green-600
             hover:bg-green-700
-            transition-all
-            duration-300
-            shadow-md
-            hover:shadow-lg
+            text-white
+            font-semibold
+            transition
           "
         >
           Enquire Now →

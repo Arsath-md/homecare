@@ -1,332 +1,342 @@
-import { useLocation, useParams, useNavigate } from "react-router-dom";
-import { useRef } from "react";
+import { useParams } from "react-router-dom";
+import { useState } from "react";
+import services from "../datas/servicedata";
 
 export default function Forms() {
   const { title } = useParams();
-  const location = useLocation();
-  const navigate = useNavigate();
 
-  const imgs = location.state?.images;
-  const formRef = useRef();
+  const service = services.find(
+    (item) =>
+      item.title
+        .toLowerCase()
+        .replace(/\s+/g, "-") === title
+  );
+
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    age: "",
+    address: "",
+    urgency: "Need Immediately",
+    notes: "",
+  });
+
+  if (!service) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <h1 className="text-3xl font-bold">
+          Service Not Found
+        </h1>
+      </div>
+    );
+  }
+
+  const handleChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
   const sendWhatsApp = (e) => {
     e.preventDefault();
 
-    const formData = new FormData(formRef.current);
-
     const message = `
-🏥 *New Service Enquiry*
+🏥 Velan Home Care Enquiry
 
-📌 Service: ${formData.get("user_service")}
+📌 Service: ${service.title}
 
-👤 Patient Name: ${formData.get("user_name")}
-🎂 Age: ${formData.get("user_age")}
-⚧ Gender: ${formData.get("user_gender")}
+👤 Patient Name: ${formData.name}
 
-👨 Attendant Name: ${formData.get("user_atname")}
-📞 Phone: ${formData.get("user_phone")}
+📞 Mobile Number: ${formData.phone}
+
+🎂 Age: ${formData.age}
 
 📍 Address:
-${formData.get("user_address")}
+${formData.address}
 
-🩺 Care Type:
-${formData.get("care_type")}
-
-❤️ Patient Condition:
-${formData.get("mobility")}
-
-🍽 Feeding Method:
-${formData.get("feeding")}
-
-🚨 Emergency Contact:
-${formData.get("emergency_contact_name")}
-
-📞 Emergency Phone:
-${formData.get("emergency_contact_phone")}
+⏰ Requirement:
+${formData.urgency}
 
 📝 Notes:
-${formData.get("special_notes")}
+${formData.notes}
 `;
 
-    const whatsappUrl = `https://wa.me/919363878868?text=${encodeURIComponent(
-      message
-    )}`;
+    const encodedMessage = encodeURIComponent(message);
 
-    window.open(whatsappUrl, "_blank");
+    window.open(
+      `https://wa.me/919363878868?text=${encodedMessage}`,
+      "_blank"
+    );
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-5">
+    <section className="min-h-screen py-10 bg-slate-50">
+      <div className="max-w-5xl mx-auto px-4">
 
-      {/* Header */}
-      <div className="text-center mb-6">
+        {/* Service Image */}
+        <img
+          src={service.image}
+          alt={service.title}
+          className="
+            w-full
+            h-64
+            md:h-96
+            object-cover
+            rounded-3xl
+            shadow-lg
+            mb-8
+          "
+        />
+
+        {/* Service Title */}
         <h1
-          id="form-heading"
-          className="text-3xl font-bold text-slate-800"
+          className="
+            text-3xl
+            md:text-5xl
+            font-bold
+            text-slate-800
+            mb-4
+          "
         >
-          {title}
+          {service.title}
         </h1>
-      </div>
 
-      {/* Service Image */}
-      {imgs && (
-        <div className="flex justify-center mb-6">
-          <img
-            src={imgs}
-            alt={title}
-            className="w-40 h-40 object-contain"
-          />
-        </div>
-      )}
+        <p className="text-gray-600 text-lg mb-8">
+          {service.description}
+        </p>
 
-      {/* Form */}
-      <form
-        ref={formRef}
-        onSubmit={sendWhatsApp}
-        aria-labelledby="form-heading"
-        className="
-          bg-white
-          shadow-xl
-          rounded-3xl
-          p-6
-          md:p-8
-          space-y-5
-        "
-      >
+        {/* Quick Contact */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
 
-        {/* Patient Name */}
-        <div>
-          <label className="block mb-2 font-medium">
-            Patient Name
-          </label>
-          <input
-            type="text"
-            name="user_name"
-            required
-            placeholder="Enter patient name"
-            className="w-full border rounded-xl p-3"
-          />
-        </div>
-
-        {/* Age */}
-        <div>
-          <label className="block mb-2 font-medium">
-            Patient Age
-          </label>
-          <input
-            type="number"
-            name="user_age"
-            required
-            className="w-full border rounded-xl p-3"
-          />
-        </div>
-
-        {/* Gender */}
-        <div>
-          <label className="block mb-2 font-medium">
-            Gender
-          </label>
-          <select
-            name="user_gender"
-            required
-            className="w-full border rounded-xl p-3"
-          >
-            <option value="">Select Gender</option>
-            <option>Male</option>
-            <option>Female</option>
-            <option>Other</option>
-          </select>
-        </div>
-
-        {/* Attendant */}
-        <div>
-          <label className="block mb-2 font-medium">
-            Attendant Name
-          </label>
-          <input
-            type="text"
-            name="user_atname"
-            required
-            className="w-full border rounded-xl p-3"
-          />
-        </div>
-
-        {/* Phone */}
-        <div>
-          <label className="block mb-2 font-medium">
-            Contact Phone Number
-          </label>
-          <input
-            type="tel"
-            name="user_phone"
-            required
-            className="w-full border rounded-xl p-3"
-          />
-        </div>
-
-        {/* Address */}
-        <div>
-          <label className="block mb-2 font-medium">
-            Care Location / Address
-          </label>
-          <input
-            type="text"
-            name="user_address"
-            required
-            className="w-full border rounded-xl p-3"
-          />
-        </div>
-
-        {/* Service */}
-        <div>
-          <label className="block mb-2 font-medium">
-            Service Selected
-          </label>
-          <input
-            type="text"
-            name="user_service"
-            value={title}
-            readOnly
-            className="w-full border rounded-xl p-3 bg-gray-100"
-          />
-        </div>
-
-        {/* Care Type */}
-        <div>
-          <label className="block mb-2 font-medium">
-            Type of Care Required
-          </label>
-          <select
-            name="care_type"
-            required
-            className="w-full border rounded-xl p-3"
-          >
-            <option value="">Select Care Type</option>
-            <option>24 Hours</option>
-            <option>Day Shift</option>
-            <option>Night Shift</option>
-            <option>Hourly</option>
-          </select>
-        </div>
-
-        {/* Condition */}
-        <div>
-          <label className="block mb-2 font-medium">
-            Patient Condition
-          </label>
-          <select
-            name="mobility"
-            className="w-full border rounded-xl p-3"
-          >
-            <option value="">Select Condition</option>
-            <option>Independent</option>
-            <option>Critical</option>
-            <option>Bedridden</option>
-          </select>
-        </div>
-
-        {/* Feeding */}
-        <div>
-          <label className="block mb-2 font-medium">
-            Feeding Method
-          </label>
-          <select
-            name="feeding"
-            className="w-full border rounded-xl p-3"
-          >
-            <option value="">Select Feeding</option>
-            <option>Normal</option>
-            <option>Tube Feeding</option>
-            <option>IV</option>
-          </select>
-        </div>
-
-        {/* Emergency Contact */}
-        <div>
-          <label className="block mb-2 font-medium">
-            Emergency Contact Name
-          </label>
-          <input
-            type="text"
-            name="emergency_contact_name"
-            required
-            className="w-full border rounded-xl p-3"
-          />
-        </div>
-
-        <div>
-          <label className="block mb-2 font-medium">
-            Emergency Contact Phone
-          </label>
-          <input
-            type="tel"
-            name="emergency_contact_phone"
-            required
-            className="w-full border rounded-xl p-3"
-          />
-        </div>
-
-        {/* Notes */}
-        <div>
-          <label className="block mb-2 font-medium">
-            Special Instructions / Notes
-          </label>
-          <textarea
-            name="special_notes"
-            rows="4"
-            className="w-full border rounded-xl p-3"
-          />
-        </div>
-
-        {/* Consent */}
-        <label className="flex items-center gap-2">
-          <input
-            type="checkbox"
-            name="consent"
-            required
-          />
-          <span>
-            I confirm the information provided is correct
-          </span>
-        </label>
-
-        {/* Buttons */}
-        <div className="flex flex-col sm:flex-row gap-3">
-
-          <button
-            type="submit"
+          <a
+            href="tel:+919363878868"
             className="
-              flex-1
+              bg-blue-600
+              hover:bg-blue-700
+              text-white
+              text-center
+              py-4
+              rounded-2xl
+              font-bold
+              text-lg
+              transition
+            "
+          >
+            📞 Call Now
+          </a>
+
+          <a
+            href="https://wa.me/919363878868"
+            target="_blank"
+            rel="noreferrer"
+            className="
               bg-green-600
               hover:bg-green-700
               text-white
-              py-3
-              rounded-xl
-              font-semibold
+              text-center
+              py-4
+              rounded-2xl
+              font-bold
+              text-lg
+              transition
             "
           >
-            Send via WhatsApp
-          </button>
-
-          <button
-            type="button"
-            onClick={() => navigate(-1)}
-            className="
-              flex-1
-              bg-slate-800
-              hover:bg-slate-900
-              text-white
-              py-3
-              rounded-xl
-              font-semibold
-            "
-          >
-            Back
-          </button>
+            💬 WhatsApp Us
+          </a>
 
         </div>
 
-      </form>
-    </div>
+        {/* Form */}
+        <div
+          className="
+            bg-white
+            rounded-3xl
+            shadow-xl
+            p-6
+            md:p-10
+          "
+        >
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-slate-800">
+              Request a Call Back
+            </h2>
+
+            <p className="text-gray-500 mt-2">
+              Fill your details and our team will contact you.
+            </p>
+          </div>
+
+          <form
+            onSubmit={sendWhatsApp}
+            className="space-y-5"
+          >
+
+            <div>
+              <label className="block mb-2 font-medium">
+                Patient Name
+              </label>
+
+              <input
+                type="text"
+                name="name"
+                required
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Enter Patient Name"
+                className="
+                  w-full
+                  border
+                  rounded-2xl
+                  p-4
+                  outline-none
+                  focus:ring-2
+                  focus:ring-green-500
+                "
+              />
+            </div>
+
+            <div>
+              <label className="block mb-2 font-medium">
+                Mobile Number
+              </label>
+
+              <input
+                type="tel"
+                name="phone"
+                required
+                value={formData.phone}
+                onChange={handleChange}
+                placeholder="9876543210"
+                className="
+                  w-full
+                  border
+                  rounded-2xl
+                  p-4
+                  outline-none
+                  focus:ring-2
+                  focus:ring-green-500
+                "
+              />
+            </div>
+
+            <div>
+              <label className="block mb-2 font-medium">
+                Patient Age
+              </label>
+
+              <input
+                type="number"
+                name="age"
+                value={formData.age}
+                onChange={handleChange}
+                placeholder="Age"
+                className="
+                  w-full
+                  border
+                  rounded-2xl
+                  p-4
+                  outline-none
+                  focus:ring-2
+                  focus:ring-green-500
+                "
+              />
+            </div>
+
+            <div>
+              <label className="block mb-2 font-medium">
+                Village / Address
+              </label>
+
+              <textarea
+                rows="3"
+                name="address"
+                required
+                value={formData.address}
+                onChange={handleChange}
+                placeholder="Village, Area, Street..."
+                className="
+                  w-full
+                  border
+                  rounded-2xl
+                  p-4
+                  outline-none
+                  focus:ring-2
+                  focus:ring-green-500
+                "
+              />
+            </div>
+
+            <div>
+              <label className="block mb-2 font-medium">
+                Requirement
+              </label>
+
+              <select
+                name="urgency"
+                value={formData.urgency}
+                onChange={handleChange}
+                className="
+                  w-full
+                  border
+                  rounded-2xl
+                  p-4
+                  outline-none
+                  focus:ring-2
+                  focus:ring-green-500
+                "
+              >
+                <option>Need Immediately</option>
+                <option>Within 24 Hours</option>
+                <option>Within This Week</option>
+                <option>Just Enquiry</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block mb-2 font-medium">
+                Additional Information
+              </label>
+
+              <textarea
+                rows="3"
+                name="notes"
+                value={formData.notes}
+                onChange={handleChange}
+                placeholder="Optional"
+                className="
+                  w-full
+                  border
+                  rounded-2xl
+                  p-4
+                  outline-none
+                  focus:ring-2
+                  focus:ring-green-500
+                "
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="
+                w-full
+                bg-green-600
+                hover:bg-green-700
+                text-white
+                py-4
+                rounded-2xl
+                font-bold
+                text-lg
+                transition
+              "
+            >
+              📩 Submit
+            </button>
+
+          </form>
+        </div>
+
+      </div>
+    </section>
   );
 }
